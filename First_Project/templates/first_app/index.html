@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'first_app/css/style.css' %}">
+
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome to the First Homepage</h1>
+    <p>{{ name }}</p>  <!-- Display the dynamic content passed from the view -->
+    <br>
+    <img src="{% static "first_app/images/image.jpg"%}" alt="Something Problem">
+    <br>
+    <a href="{% url 'first_app:about' %}">About Page</a>
+
+</body>
+</html>

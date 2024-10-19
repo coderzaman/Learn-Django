@@ -37,6 +37,8 @@ from django.http import HttpResponse
 
 # We can create urls.py in frist application 
 def index(request):
-     return HttpResponse("<h1>Home Page</h1>") 
-def contact(request):
-     return HttpResponse("<h1>Contact Page</h1>") 
+     dict = {'name':'Bismillahir Rahmanir Rahim'}
+     return render(request, 'first_app/index.html', context=dict)
+
+def about(request):
+     return render(request, 'first_app/about.html')
