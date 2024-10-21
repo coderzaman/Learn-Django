@@ -1,26 +1,49 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="{% static 'musician/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
     <title>Musician</title>
 </head>
 <body>
-    <div class="container-img-fluid">
-        <h1 class="bg-danger text-white text-center p-1 py-3">Musician List</h1>
-    </div>
-    <div class="container">
-        <div class="row">
-           <div class="col-12">
-            <a class="btn btn-danger" href="{% url 'musician:add_musician' %}">Add Musician</a>
-           </div>
+    
+    <!-- Header Section -->
+    <div class="container-fluid bg-info">
+        <div class="container">
+            <h1 class="text-center py-3 text-white fw-bold text-uppercase">{{ title }}</h1>
         </div>
     </div>
-    <!-- Bootstrap JS (for interactive components) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Table to Display Musician Data -->
+    <div class="container text-center mt-5">
+        <div class="row">
+            <div class="col-6 m-auto">
+                <table class="table table-info">
+                    <thead>
+                      <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Instrument</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through each musician -->
+                        {% for row in musician %}
+                        <tr>
+                            <td>{{ row.name }}</td>        <!-- Display first name -->
+                            <td>{{ row.last_name }}</td>   <!-- Display last name -->
+                            <td>{{ row.instruments }}</td> <!-- Display instruments -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 </body>
 </html>
