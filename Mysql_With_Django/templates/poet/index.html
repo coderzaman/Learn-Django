@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends "poet/base.html" %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="container-fuid text-bg-info text-uppercase fw-bold">
+    <img class="img-fluid" src="{% static 'poet/images/image.jpeg' %}" alt="">
+</div>
+
+<div class="container mt-5">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h3 class="d-inline text-bg-success p-2 px-4 rounded">Your Poets</h3>
+           </div>
+    </div>
+    <div class="row tableSection">
+        <div class="col-12">
+            <div class="text-center">
+                <table class="table table-success">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Instrument</th>
+                        <th scope="col">Album</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% if poets %}
+                            {% for poet in poets  %}
+                            <tr>
+                                <td>{{ poet.first_name }} {{ poet.last_name }}</td>
+                                <td>{{poet.address}}</td>
+                                <td>{{poet.instrument}}</td>
+                                <td><a href="{%url 'poet:album_list' poet_id=poet.id %}" class="btn btn-success">View Album</a></td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+ </div>
+
+{% endblock body_block %}
+

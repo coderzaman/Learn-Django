@@ -1,65 +1,35 @@
 <!DOCTYPE html>
+{% extends "poetry/base.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="{% static 'poetry/css/style.css' %}">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container-fuid text-bg-success text-uppercase fw-bold">
-        <div class="container m-auto">
-             <div class="row">
-                 <div class="col-12 text-center py-3">
-                     <h1>Add Poets</h1>
-                 </div>
-             </div>
-        </div>
-     </div>
 
-     <div class="container my-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="div">
-                    <a class="btn btn-success px-4 py-2" href="{% url 'poetry:index'%}">Back To Home</a>
-                </div>
+
+{% block body_block %}
+ <div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="div">
+                <a class="btn btn-success px-4 py-2" href="{% url 'poetry:index'%}">Back To Home</a>
             </div>
         </div>
-     </div>
+    </div>
+ </div>
 
-     <div class="container">
-        <div class="row ">
-            <div class="col-12 d-flex justify-content-center my-3">
-                <h3 class="d-inline text-bg-success py-2 px-3 ">{{form_head}}</h3>
-            </div>
-
-           <div class="col-6 m-auto">
-            <form action="" method="POST">
-                {{musicican_form}}
-                {% csrf_token %}
-                <div class="col-12 text-center">
-                    <input type="submit" class="btn btn-success fs-5 fw-bold px-5">
-                </div>
-            </form>
-
-            {% comment %} if from submitted show informaiton {% endcomment %}
-            {% comment %} {% if from_submitted%} {% endcomment %}
-                {% comment %} <p>{{field}}</p>
-                <p>{{age}}</p>
-                <p>{{even_number}}</p>
-                <p>{{user_email}}</p> {% endcomment %}
-                {% comment %} <p>{{last_name}}</p>
-                <p>{{address}}</p>
-                <p>{{instrument}}</p> {% endcomment %}
-            {% comment %} {% endif %} {% endcomment %}
-           </div>
+ <div class="container">
+    <div class="row ">
+        <div class="col-12 d-flex justify-content-center my-3">
+            <h3 class="d-inline text-bg-success py-2 px-3 ">{{form_head}}</h3>
         </div>
-     </div>
 
-  
+       <div class="col-6 m-auto mb-4">
+        <form action="" method="POST">
+            {{musicican_form}}
+            {% csrf_token %}
+            <div class="col-12 text-center">
+                <input type="submit" class="btn btn-success fs-5 fw-bold px-5">
+            </div>
+        </form>
+       </div>
+    </div>
+ </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock body_block %}

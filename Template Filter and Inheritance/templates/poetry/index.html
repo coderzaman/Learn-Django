@@ -1,68 +1,110 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=h1, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="{% static 'poetry/css/style.css' %}">
-    <title>Poetry</title>
-</head>
-<body>
-    <div class="container-fuid text-bg-success text-uppercase fw-bold">
-       <div class="container m-auto">
-            <div class="row">
-                <div class="col-12 text-center py-3">
-                    <h1>{{ title }}</h1>
-                </div>
+{% extends "poetry/base.html" %}
+{% load static my_filters %}
+
+
+{% block body_block %}
+
+  <div class="container-fuid text-bg-info text-uppercase fw-bold">
+     <img class="img-fluid" src="{% static 'poetry/images/image.jpeg' %}" alt="">
+  </div>
+
+  <div class="container mt-5">
+     <div class="row mb-5">
+         <div class="col-12 text-center">
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{title|lower}}</h3> {% endcomment %}
+             <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{title|upper}}</h3>
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{title|title}}</h3> {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{title|capfirst}}</h3> {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{number|add:"5"}}</h3> {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{number|add:7}}</h3> {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{list|add:list2}}</h3> {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{text|lower|cut:"t"|upper}}</h3> {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{date|date:"l, F d, Y"}}</h3> {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{rel_date.release_date | date:"l, F d, Y"}}</h3> {% endcomment %}
+             
+             {% comment %} 
+                Make cutom filter: For making cutom filter first create templatetags folder under this application.
+                
+                Create a file name for example: my_filter.py
+                
+                Then create a __init__.py file to it make to as library(my_filter.py)
+                
+                Import and register libray: 
+                from django import template
+                register = template.Library()
+
+                make a custom filter
+
+                def my_filter(value):
+                     return "Added Text " + value
+
+                make custom filter which receive an argument
+                def my_filter(value, arg):
+                    return  arg + value
+                register the filter as named custom_filter
+                register.filter('custom_filter', my_filter)
+
+                {% load my_filter %} for use here
+
+                We can make it using decorators imporve readable
+                # my_filter.py
+                from django import template
+
+                # Register the template library
+                register = template.Library()
+
+                # Custom filter without arguments
+                @register.filter(name='custom_filter')
+                def my_filter(value):
+                    return "Added Text " + value
+
+                # Custom filter with an argument
+                @register.filter(name='custom_filter_with_arg')
+                def my_filter_with_arg(value, arg):
+                    return arg + value
+
+
+             {% endcomment %}
+
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{title|custom_filter}}</h3>  {% endcomment %}
+             {% comment %} <h3 class="d-inline text-bg-success p-2 px-4 rounded">{{title|custom_filter:"Hello"}}</h3>  {% endcomment %}
             </div>
-       </div>
-    </div>
-    <div class="container-fuid text-bg-info text-uppercase fw-bold">
-        <img class="img-fluid" src="{% static 'poetry/images/image.jpeg' %}" alt="">
      </div>
-     <div class="container mt-5">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h3 class="text-uppercase d-inline text-bg-success p-2 px-4 rounded">Great Poets</h3>
-            </div>
-        </div>
-        <div class="row tableSection">
-            <div class="col-12">
-                <div class="text-center">
-                    <table class="table table-success">
-                        <thead>
-                          <tr>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Instrument</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for poetry in poetry_list%}
-                            <tr>
-                                <td>{{poetry.first_name}}</td>
-                                <td>{{poetry.last_name}}</td>
-                                <td>{{poetry.address}}</td>
-                                <td>{{poetry.instrument}}</td>
-                            </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                </div>
-            </div>
-        </div>
+     <div class="row tableSection">
+         <div class="col-12">
+             <div class="text-center">
+                 <table class="table table-success">
+                     <thead>
+                       <tr>
+                         <th scope="col">First Name</th>
+                         <th scope="col">Last Name</th>
+                         <th scope="col">Address</th>
+                         <th scope="col">Instrument</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       {% for poetry in poetry_list%}
+                         <tr>
+                             <td>{{poetry.first_name}}</td>
+                             <td>{{poetry.last_name}}</td>
+                             <td>{{poetry.address}}</td>
+                             <td>{{poetry.instrument}}</td>
+                         </tr>
+                       {% endfor %}
+                     </tbody>
+                   </table>
+             </div>
+         </div>
      </div>
-     <div class="container my-4">
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="div">
-                    <a class="btn btn-success px-4 py-2" href="{% url 'poetry:form'%}">Add Poets</a>
-                </div>
-            </div>
-        </div>
+  </div>
+  <div class="container my-4">
+     <div class="row">
+         <div class="col-12 text-center">
+             <div class="div">
+                 <a class="btn btn-success px-4 py-2" href="{% url 'poetry:form'%}">Add Poets</a>
+             </div>
+         </div>
      </div>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
-</body>
-</html>
+  </div>
+{% endblock body_block %}
