@@ -23,6 +23,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
                         <th scope="col">Instrument</th>
+                        <th scope="col">Modify</th>
                         <th scope="col">Album</th>
                       </tr>
                     </thead>
@@ -33,6 +34,7 @@
                                 <td>{{ poet.first_name }} {{ poet.last_name }}</td>
                                 <td>{{poet.address}}</td>
                                 <td>{{poet.instrument}}</td>
+                                <td><a href="{%url 'poet:edit_poet' poet_id=poet.id %}" class="btn btn-success">Edit</a></td>
                                 <td><a href="{%url 'poet:album_list' poet_id=poet.id %}" class="btn btn-success">View Album</a></td>
                             </tr>
                             {% endfor %}

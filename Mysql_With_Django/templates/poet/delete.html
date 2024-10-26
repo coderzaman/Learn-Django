@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends "poet/base.html" %}
+{% load static %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="row mt-3">
+            <div class="alert alert-danger">{{delete_message}}</div>
+        </div>
+    </div>
+{% endblock body_block %}

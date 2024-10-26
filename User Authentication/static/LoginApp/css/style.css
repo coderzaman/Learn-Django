@@ -1,0 +1,22 @@
+.navbar-nav .nav-link {
+    color: white; /* Change link color */
+    font-size: 16px; /* Change font size */
+    padding: 10px 20px; /* Add padding */
+    transition: 0.3s; /* Smooth background color change */
+}
+
+.navbar-nav .nav-link:hover {
+    font-weight: 700;
+    color: #fff;
+}
+
+.register_head {
+    font-family: "Rubik Wet Paint", system-ui;
+    font-style: normal;
+    color: #202020;
+    font-size: 3rem;
+}
+
+label{
+    font-weight: bold;
+}

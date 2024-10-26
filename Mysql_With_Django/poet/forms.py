@@ -37,7 +37,7 @@ class AlbumForm(forms.ModelForm):
         fields = "__all__"
         
         labels = {
-            'artist': "Artist Name",
+            'artist': "Poet Name",
             'name': "Album Name",
             'release_date': "Release Date", 
         }
