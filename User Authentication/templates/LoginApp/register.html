@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6 m-auto mb-4">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
           {{ user_form }}
           {{ user_info_form}}
           {% csrf_token %}

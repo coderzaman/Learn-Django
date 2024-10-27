@@ -9,7 +9,7 @@
     font-weight: 700;
     color: #fff;
 }
-
+.login_head,
 .register_head {
     font-family: "Rubik Wet Paint", system-ui;
     font-style: normal;
@@ -19,4 +19,16 @@
 
 label{
     font-weight: bold;
+}
+
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
