@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'LoginApp/base.html' %}
+{% block body_block %}
+  <div class="container">
+    <div class="row">
+      <div class="col-6 text-center m-auto mt-3">
+        <ul></ul>
+        
+        <table class="table table-primary">
+          <thead>
+            <tr>
+              <th scope="col">Poets Name</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% if poet_list %}
+              {% for poet in poet_list %}
+                <tr>
+                  <td><a href="{% url 'poet:poet_detail' pk=poet.pk %}">{{ poet.first_name }} {{ poet.last_name }}</a> </td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}

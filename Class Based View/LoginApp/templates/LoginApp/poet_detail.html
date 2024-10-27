@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% extends 'LoginApp/base.html' %}
+{% block body_block %}
+  <div class="container">
+    <div class="row">
+      <div class="col-6 text-center m-auto mt-3">
+        <ul></ul>
+
+        <table class="table table-primary table-striped">
+          <thead>
+            <tr>
+              <th class="header text-primary fs-1 fw-light" scope="col" colspan="2">Poets Details</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% if poet %}
+                <tr>
+                  <th>Name</th>
+                  <td>{{ poet.first_name }} {{ poet.last_name}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ poet.address }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ poet.instrument }}</td>
+                </tr>
+            {% endif %}
+          </tbody>
+
+          
+          <table class="table table-primary table-striped">
+            <thead>
+               <tr>
+                <th class="header text-primary fs-1" colspan="2">Album List</th>
+               </tr> 
+            </thead>
+            <hr>
+    
+            <tbody class="table-group-divider">
+              {% if poet.album_list.all %}
+                {% for album in poet.album_list.all %}
+                  <tr>
+                    <th>Album</th>
+                    <td>{{album.name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Release Date</th>
+                    <td>{{album.release_date}}</td>
+                  </tr>
+                  <tr>
+                    <th>Rating</th>
+                    <td>{{album.rating}}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
