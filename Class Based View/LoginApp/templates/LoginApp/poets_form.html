@@ -1,0 +1,22 @@
+{% extends 'LoginApp/base.html' %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4">
+            {% if form.instance.pk  %}
+             <h3>Update Poets</h3>
+            {% else %}
+              <h3>Add Poets</h3>
+            {% endif %}
+        </div>
+        <div class="col-6">
+            <form method="POST">
+                {{form.as_p}}
+                {% csrf_token %}
+                <input type="submit" value="Add Poet" name="submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body_block %}

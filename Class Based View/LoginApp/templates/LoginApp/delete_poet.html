@@ -1,0 +1,16 @@
+{% extends 'LoginApp/base.html' %}
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h3>Delete {{poets.first_name}} {{poets.last_name}}?</h3>
+            <form method="POST">
+                <input type="submit" value="Delete" name="submit" class="btn btn-danger">
+                <a href="{% url 'poet:poet_detail' pk=poets.pk%}" class="btn btn-info">Cancel</a>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body_block %}
+

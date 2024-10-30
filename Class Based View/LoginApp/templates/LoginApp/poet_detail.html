@@ -14,50 +14,54 @@
           </thead>
           <tbody class="table-group-divider">
             {% if poet %}
-                <tr>
-                  <th>Name</th>
-                  <td>{{ poet.first_name }} {{ poet.last_name}}</td>
-                </tr>
-                <tr>
-                    <th>Address</th>
-                    <td>{{ poet.address }}</td>
-                </tr>
-                <tr>
-                    <th>Address</th>
-                    <td>{{ poet.instrument }}</td>
-                </tr>
+              <tr>
+                <th>Name</th>
+                <td>{{ poet.first_name }} {{ poet.last_name }}</td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>{{ poet.address }}</td>
+              </tr>
+              <tr>
+                <th>Instrument</th>
+                <td>{{ poet.instrument }}</td>
+              </tr>
             {% endif %}
           </tbody>
-
-          
+        </table>
+     
+          <a href="{% url "poet:update_poet" pk=poet.pk %}" class="btn btn-warning mb-5">Update</a>
+          <a href="{% url "poet:delete_poet" pk=poet.pk %}" class="btn btn-danger mb-5">Delete</a>
+    
+        <div class="row">
           <table class="table table-primary table-striped">
             <thead>
-               <tr>
+              <tr>
                 <th class="header text-primary fs-1" colspan="2">Album List</th>
-               </tr> 
+              </tr>
             </thead>
-            <hr>
-    
+            <hr />
+
             <tbody class="table-group-divider">
               {% if poet.album_list.all %}
                 {% for album in poet.album_list.all %}
                   <tr>
                     <th>Album</th>
-                    <td>{{album.name}}</td>
+                    <td>{{ album.name }}</td>
                   </tr>
                   <tr>
                     <th>Release Date</th>
-                    <td>{{album.release_date}}</td>
+                    <td>{{ album.release_date }}</td>
                   </tr>
                   <tr>
                     <th>Rating</th>
-                    <td>{{album.rating}}</td>
+                    <td>{{ album.rating }}</td>
                   </tr>
                 {% endfor %}
               {% endif %}
             </tbody>
           </table>
-        </table>
+        </div>
       </div>
     </div>
   </div>
